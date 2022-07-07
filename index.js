@@ -6,20 +6,18 @@ const PORT = process.env.PORT || 5000;
 let apiFlow = process.env.npm_package_version + '-l' + (process.env.NODE_API_SUFFIX || 0);
 console.log(apiFlow);
 
-const launch = () => {
-    return http.createServer((req, res) => {
+const launch = http.createServer((req, res) => {
 
-        if (req.url === '/') {
+    if (req.url === '/') {
 
-            res.setHeader('Set-Cookie', cookie.serialize('api', apiFlow));
+        res.setHeader('Set-Cookie', cookie.serialize('api', apiFlow));
 
-            res.writeHead(200);
-            res.end(`Main page release: ${apiFlow}`);
-        }
-    });
-}
+        res.writeHead(200);
+        res.end(`Main page release: ${apiFlow}`);
+    }
+});
 
-launch().listen(PORT, 'localhost', () => {
+launch.listen(PORT, 'localhost', () => {
     console.log(`REST API server instance started at: ${PORT}`);
 });
 
