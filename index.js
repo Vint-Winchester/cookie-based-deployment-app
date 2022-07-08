@@ -7,7 +7,7 @@ let apiFlow = process.env.npm_package_version + '-l' + (process.env.NODE_API_SUF
 console.log(apiFlow);
 
 const launch = () => {
-    http.createServer((req, res) => {
+    return http.createServer((req, res) => {
         console.log(apiFlow);
         if (req.url === '/') {
 
