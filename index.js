@@ -4,7 +4,7 @@ import http from 'http';
 
 const PORT = process.env.PORT || 5000;
 let apiFlow = process.env.npm_package_version + '-l' + (process.env.NODE_API_SUFFIX || 0);
-// console.log(apiFlow);
+console.log(apiFlow);
 
 const launch = () => {
     return http.createServer((req, res) => {
