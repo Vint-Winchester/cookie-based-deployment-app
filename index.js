@@ -28,6 +28,7 @@ launch().listen(PORT, 'localhost', () => {
 });
 
 process.on('SIGHUP', () => {
+    console.log('suffix:', process.env.NODE_API_SUFFIX);
     apiFlow = process.env.npm_package_version + '-l' + +!process.env.NODE_API_SUFFIX;
     // upApiFlow();
     console.log('switch', apiFlow);
