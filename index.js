@@ -4,11 +4,11 @@ import http from 'http';
 
 const PORT = process.env.PORT || 5000;
 let apiFlow = process.env.npm_package_version + '-l' + (process.env.NODE_API_SUFFIX || 0);
-console.log(apiFlow);
+console.log('start', apiFlow);
 
 const launch = () => {
     return http.createServer((req, res) => {
-        console.log(apiFlow);
+        console.log('inside', apiFlow);
         if (req.url === '/') {
 
             res.setHeader('Set-Cookie', cookie.serialize('api', apiFlow));
@@ -25,7 +25,7 @@ launch().listen(PORT, 'localhost', () => {
 
 process.on('SIGHUP', () => {
     apiFlow = process.env.npm_package_version + '-l' + +!process.env.NODE_API_SUFFIX;
-    console.log(apiFlow);
+    console.log('switch', apiFlow);
     const sec2End = 30000;
     console.log(`Exiting in ${sec2End}`);
     setTimeout(() => {
